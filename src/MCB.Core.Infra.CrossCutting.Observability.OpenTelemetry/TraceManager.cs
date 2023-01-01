@@ -16,7 +16,7 @@ public class TraceManager
     }
 
     // Public Methods
-    public void StartActivity(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string executionUser, string sourcePlatform, Action<Activity> handler)
+    public void StartActivity(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string? executionUser, string? sourcePlatform, Action<Activity> handler)
     {
         using var activity = _activitySource.StartActivity(name, kind);
 
@@ -37,7 +37,7 @@ public class TraceManager
             throw;
         }
     }
-    public void StartActivity<TInput>(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string executionUser, string sourcePlatform, TInput? input, Action<TInput?, Activity> handler)
+    public void StartActivity<TInput>(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string? executionUser, string? sourcePlatform, TInput? input, Action<TInput?, Activity> handler)
     {
         using var activity = _activitySource.StartActivity(name, kind);
 
@@ -58,7 +58,7 @@ public class TraceManager
             throw;
         }
     }
-    public TOutput? StartActivity<TInput, TOutput>(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string executionUser, string sourcePlatform, TInput? input, Func<TInput?, Activity, TOutput?> handler)
+    public TOutput? StartActivity<TInput, TOutput>(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string? executionUser, string? sourcePlatform, TInput? input, Func<TInput?, Activity, TOutput?> handler)
     {
         using var activity = _activitySource.StartActivity(name, kind);
 
@@ -80,7 +80,7 @@ public class TraceManager
         }
     }
 
-    public Task StartActivityAsync(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string executionUser, string sourcePlatform, Func<Activity, CancellationToken, Task> handler, CancellationToken cancellationToken)
+    public Task StartActivityAsync(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string? executionUser, string? sourcePlatform, Func<Activity, CancellationToken, Task> handler, CancellationToken cancellationToken)
     {
         using var activity = _activitySource.StartActivity(name, kind);
 
@@ -101,7 +101,7 @@ public class TraceManager
             throw;
         }
     }
-    public Task StartActivityAsync<TInput>(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string executionUser, string sourcePlatform, TInput? input, Func<TInput?, Activity, CancellationToken, Task> handler, CancellationToken cancellationToken)
+    public Task StartActivityAsync<TInput>(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string? executionUser, string? sourcePlatform, TInput? input, Func<TInput?, Activity, CancellationToken, Task> handler, CancellationToken cancellationToken)
     {
         using var activity = _activitySource.StartActivity(name, kind);
 
@@ -122,7 +122,7 @@ public class TraceManager
             throw;
         }
     }
-    public Task<TOutput?> StartActivityAsync<TInput, TOutput>(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string executionUser, string sourcePlatform, TInput? input, Func<TInput?, Activity, CancellationToken, Task<TOutput?>> handler, CancellationToken cancellationToken)
+    public Task<TOutput?> StartActivityAsync<TInput, TOutput>(string name, ActivityKind kind, Guid correlationId, Guid tenantId, string? executionUser, string? sourcePlatform, TInput? input, Func<TInput?, Activity, CancellationToken, Task<TOutput?>> handler, CancellationToken cancellationToken)
     {
         using var activity = _activitySource.StartActivity(name, kind);
 
@@ -145,7 +145,7 @@ public class TraceManager
     }
 
     // Private Methods
-    private static void SetDefaultActivityTags(Activity activity, Guid correlationId, Guid tenantId, string executionUser, string sourcePlatform)
+    private static void SetDefaultActivityTags(Activity activity, Guid correlationId, Guid tenantId, string? executionUser, string? sourcePlatform)
     {
         activity.SetTag(ITraceManager.CORRELATION_ID_TAG_NAME, correlationId);
         activity.SetTag(ITraceManager.TENANT_ID_TAG_NAME, tenantId);
