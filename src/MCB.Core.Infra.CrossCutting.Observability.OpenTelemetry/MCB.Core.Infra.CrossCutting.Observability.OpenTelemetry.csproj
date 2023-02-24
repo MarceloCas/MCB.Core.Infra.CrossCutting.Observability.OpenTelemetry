@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MCB.Core.Infra.CrossCutting.DependencyInjection.Abstractions" Version="0.7.0-alpha" />
-    <PackageReference Include="MCB.Core.Infra.CrossCutting.Observability.Abstractions" Version="0.10.0-alpha" />
+    <PackageReference Include="MCB.Core.Infra.CrossCutting.DependencyInjection.Abstractions" Version="0.8.0-alpha" />
+    <PackageReference Include="MCB.Core.Infra.CrossCutting.Observability.Abstractions" Version="0.11.0-alpha" />
     <PackageReference Include="OpenTelemetry" Version="1.3.2" />
   </ItemGroup>
 
